@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <h1 class="title">{{ .Title }}</h1>
+  <div class="link-collection">
+    {{ if eq .Page.Language.Lang "de" }}
+      <a title="Veröffentlichte Inhalte" href="{{ printf "%sarchive" .RelPermalink }}">Blog-Archiv</a>
+    {{ else if eq .Page.Language.Lang "en" }}
+      <a title="A List of published Content" href="{{ printf "%sarchive" .RelPermalink }}">Blog Archive</a>
+    {{ end }}
+    <span> &middot; </span>
+    {{ if eq .Page.Language.Lang "de" }}
+      <a title="Feed abonnieren" href="{{ printf "%sindex.xml" .RelPermalink }}">RSS Feed</a>
+    {{ else if eq .Page.Language.Lang "en" }}
+      <a title="Stay up to date!" href="{{ printf "%sindex.xml" .RelPermalink }}">RSS Feed</a>
+    {{ end }}
+  </div>
+  {{ .Content }}
+  <div class="previews">
+    {{ range first 5 (sort .RegularPages ".Date" "desc") }}
+      {{ partial "preview.html" . }}
+    {{ end }}
+  </div>
+{{ end }}

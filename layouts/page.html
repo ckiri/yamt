@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <h1 class="title">{{ .Title }}</h1>
+  <div class="content-metadata">
+    <div class="terms">
+      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    </div>
+    {{ $dateTime := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateF := .Date | time.Format ":date_full" }}
+    {{ $timeF := .Date | time.Format ":time_short" }}
+    <time datetime="{{ $dateTime }}">{{ $dateF }} {{ $timeF }}</time>
+  </div>
+  <div class="content">
+    {{ .Content }}
+  </div>
+{{ end }}

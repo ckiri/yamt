@@ -1,0 +1,14 @@
+{{- $opts := dict "output" "mathml" "displayMode" (eq .Type "block") }}
+{{- with try (transform.ToMath .Inner $opts) }}
+  {{- with .Err }}
+    {{- errorf "Unable to render math-markup to HTML using transform.ToMath. KaTeX display engine threw following error: %s: see %s." . $.Position }}
+  {{- else }}
+    {{ if eq $opts.displayMode true }}
+      <div class="math-block">
+        {{ .Value }}
+      </div>
+    {{ else }}
+      {{- .Value }}
+    {{ end }}
+  {{- end }}
+{{- end -}}

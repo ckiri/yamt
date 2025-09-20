@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ .Title }}</title>
+  {{ partialCached "head/css.html" . }}
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <header>
+    {{ partial "header.html" . }}
+  </header>
+  <main>
+    <h1 class="title">{{ .Title }}</h1>
+    {{ .Content }}
+  </main>
+  <footer>
+    {{ if eq .Page.Language.Lang "de" }}
+      {{ if eq .RelPermalink "/de/imprint/" }}
+        <b>Impressum</b>
+      {{ else }}
+        <a href="{{ .Site.BaseURL }}de/imprint/">Impressum</a>
+      {{ end }}
+      &middot;
+      {{ if eq .RelPermalink "/de/privacy/" }}
+        <b>Datenschutz</b>
+      {{ else }}
+        <a href="{{ .Site.BaseURL }}de/privacy/">Datenschutz</a>
+      {{ end }}
+    {{ else if eq .Page.Language.Lang "en" }}
+      {{ if eq .RelPermalink "/en/imprint/" }}
+        <b>imprint</b>
+      {{ else }}
+        <a href="{{ .Site.BaseURL }}en/imprint/">imprint</a>
+      {{ end }}
+      &middot;
+      {{ if eq .RelPermalink "/en/privacy/" }}
+        <b>privacy</b>
+      {{ else }}
+        <a href="{{ .Site.BaseURL }}en/privacy/">privacy</a>
+      {{ end }}
+    {{ end }}
+  </footer>
+</body>
+</html>
+
+<!--
+<script>
+  console.log("Permalink: {{ .Permalink }}")
+  {{ $imprintURL :=  printf "%sde/imprint/" .Site.BaseURL }}
+  console.log("Imprint URL: {{ $imprintURL }}")
+</script>
+-->
