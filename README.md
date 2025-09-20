@@ -28,20 +28,9 @@ theme: yamt
 Configuration for your site (again in `hugo.yaml`) **should/could** contain the following options:
 ```yaml
 baseURL: https://<your_domain>/
-languageCode: en-EN
-title: <your_websites_title>
-
-menus:
-  main:
-    - name: Home
-      pageRef: /
-      weight: 10
-    - name: Blog
-      pageRef: /posts
-      weight: 20
-    - name: Tags
-      pageRef: /tags
-      weight: 30
+languageCode: en-US
+title: <your_title>
+theme: yamt
 
 markup:
   goldmark:
@@ -63,15 +52,46 @@ params:
     email: <your_email>
     name: <your_name>
     github: <link_to_your_github>
-  license:
-    content: CC BY-SA 4.0
-    contentRef: https://creativecommons.org/licenses/by-sa/4.0/
+    address:
+      street: <street>
+      zipCode: <zip_code>
+      city: <city>
+      country: <country>
+  hosting:
+    name: <your_hosting_service>
+    address:
+      street: <street>
+      zipCode: <zip_code>
+      city: <city>
+      country: <country>
+  description: <a_small_description_of_your_site>
+
+defaultContentLanguage: <your_sites_main_language_eg_de>
+defaultContentLanguageInSubdir: true
+
+languages:
+  en:
+    weight: 2
+    languageName: English
+    params:
+      readingSpeed: 228
+  de:
+    weight: 1
+    languageName: Deutsch
+    params:
+      readingSpeed: 179
 ```
 
 Note that some options aren't strictly necessary, those are:
 * `markup`:
   * `unsafe`: The unsafe renderer is required if you want to include html inside your markdown files
   * `passthrough`: This allows you to write mathmatical expressions using `\(` `\)` for inline
-    & `\[` `\]` for blocks. It uses Hugos integrated \(\KaTeX\) rendering engine, so no client-side javascript
+    & `\[` `\]` for blocks. It uses Hugos integrated KaTeX rendering engine, so no client-side javascript
     is required.
-* `params`: Here contact & license information could be specified, this way links inside the header & footer are populated
+* `params`: Here contact & license information could be specified, this way links inside the header, footer
+  & legal forms (imprint/privacy) are populated:
+  * `address`: Is used inside the [author-adress](./layouts/_shortcodes/author-address.html) shortcode.
+  * `email`: Is used inside the [author-email](./layouts/_shortcodes/author-email.html) shortcode.
+  * `name`: Is used inside the [author-name](./layouts/_shortcodes/author-name.html) shortcode.
+  * `hosting-name`: Is used inside the [hosting-name](./layouts/_shortcodes/hosting-name.html) shortcode.
+  * `hosting-address`: Is used inside the [hosting-address](./layouts/_shortcodes/hosting-address.html) shortcode.
