@@ -1,12 +1,12 @@
 <span>
   {{ if eq .Page.Language.Lang "de" }}
-    Aktuelle Blog-Beiträge:    
+    Aktuelle Blog-Beiträge:
   {{ else if eq .Page.Language.Lang "en" }}
     Recent Blog Posts:
   {{ end }}
 </span>
 <table class="recent-posts">
-  {{ range first 5 (sort .Site.RegularPages ".Date") }}
+  {{ range first 5 (sort .Site.RegularPages ".Date" "desc") }}
     <tr>
       <td>
         {{ $dateTimeF := .PublishDate | time.Format "2006-01-02T15:04:05-07:00" }}
