@@ -1,4 +1,10 @@
-html { font: 1.1em/1.3 Sans-serif; }
+html {
+  font: 1.1rem/1.3 Sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
 body {
   max-width: 40em;
@@ -105,8 +111,11 @@ figcaption > p {
   margin: 0;
   padding-top: 0.5em;
   text-align: center;
-  font: italic 0.8em/1.3 Sans-serif;
+  font: italic 0.8rem/1.3 Sans-serif;
 }
+
+code,
+pre { font: 0.9rem/1.1 Monospace; }
 
 code { overflow-wrap: break-word; }
 
@@ -140,7 +149,10 @@ pre {
   padding: 0.25em;
 }
 
-.footnotes * { text-align: left; }
+.footnotes * {
+  font-size: 0.8rem;
+  text-align: left;
+}
 
 sup,
 sub { line-height: 0; }
@@ -186,7 +198,7 @@ a.footnote-ref::after { content: ']'; }
 /* footer */
 
 footer {
-  font: italic 0.7rem/1.3 Sans-serif;
+  font: italic 0.8rem/1.3 Sans-serif;
   text-align: center;
   padding: 1px 0;
   border-top: 1px solid #000;
