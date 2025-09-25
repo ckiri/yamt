@@ -1,5 +1,24 @@
 {{ define "main" }}
   <h1 class="title">{{ .Title }}</h1>
+  <div class="link-collection">
+    &lt;
+    {{ if eq .Page.Language.Lang "de" }}
+      <a title="Kontaktiere mich" href="{{ .Site.Params.author.email }}">E-Mail</a>
+      <span> &middot; </span>
+      <a title="GPG-Schlüssel" href="/publickey.asc">GPG</a>
+      <span> &middot; </span>
+      <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+    {{ else if eq .Page.Language.Lang "en" }}
+      <a title="Contact me" href="{{ .Site.Params.author.email }}">E-Mail</a>
+      <span> &middot; </span>
+      <a title="GPG-Key" href="/publickey.asc">GPG</a>
+      <span> &middot; </span>
+      <a title="Development work & Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+    {{ end }}
+    &gt;
+    <br>
+    <code>{{ .Site.Params.author.gpgFingerprint }}</code>
+  </div>
   <div class="content">
     {{ .Content }}
   </div>

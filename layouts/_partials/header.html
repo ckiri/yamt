@@ -10,9 +10,9 @@
           {{ end }}
         {{ else if eq .Page.Language.Lang "en" }}
           {{ if eq "/en/" .RelPermalink }}
-            <b>About</b>
+            <b>Home</b>
           {{ else }}
-            <a href="{{ printf "%sen/" .Site.BaseURL }}">About</a>
+            <a href="{{ printf "%sen/" .Site.BaseURL }}">Home</a>
           {{ end }}
         {{ end }}
         &middot;
@@ -53,7 +53,7 @@
             &vert;
             {{ $alt := index (where .Translations "Lang" "en") 0 }}
             {{ if $alt }}
-              <a title="Change to english version" href="{{ $alt.RelPermalink }}">EN</a>
+              <a title="Switch to english version" href="{{ $alt.RelPermalink }}">EN</a>
             {{ else }}
               <span title="No translation available">EN</span>
             {{ end }}

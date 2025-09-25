@@ -3,19 +3,19 @@
   &middot;
   <a
     {{ if eq .Page.Language.Lang "de" }}
-      title="Schreib mir!"
+      title="Kontaktiere mich"
     {{ else }}
-      title="Contact me!"
+      title="Contact me"
     {{ end }}
-    href="mailto:{{ .Site.Params.author.email }}">{{ if eq .Page.Language.Lang "de" }}E-Mail{{ else }}e-mail{{ end }}</a>
+    href="mailto:{{ .Site.Params.author.email }}">{{ if eq .Page.Language.Lang "de" }}E-Mail{{ else }}E-Mail{{ end }}</a>
   &middot;
   {{ if eq .Page.Language.Lang "de" }}
     <a href="{{ .Site.BaseURL }}de/imprint/">Impressum</a>
     &middot;
     <a href="{{ .Site.BaseURL }}de/privacy/">Datenschutz</a>
   {{ else if eq .Page.Language.Lang "en" }}
-    <a href="{{ .Site.BaseURL }}en/imprint/">imprint</a>
+    <a href="{{ .Site.BaseURL }}en/imprint/">Imprint</a>
     &middot;
-    <a href="{{ .Site.BaseURL }}/en/privacy/">privacy</a>
+    <a href="{{ .Site.BaseURL }}/en/privacy/">Privacy</a>
   {{ end }}
 </nav>
