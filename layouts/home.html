@@ -1,23 +1,29 @@
 {{ define "main" }}
   <h1 class="title">{{ .Title }}</h1>
   <div class="link-collection">
-    &lt;
     {{ if eq .Page.Language.Lang "de" }}
-      <a title="Kontaktiere mich" href="{{ .Site.Params.author.email }}">E-Mail</a>
-      <span> &middot; </span>
-      <a title="GPG-Schlüssel" href="/publickey.asc">GPG</a>
-      <span> &middot; </span>
-      <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+      <details id="home-link-collection" title="GPG-Fingerabdruck anzeigen">
+        <summary>
+          <a title="Kontaktiere mich" href="{{ .Site.Params.author.email }}">E-Mail</a>
+          <span> &middot; </span>
+          <a title="GPG-Schlüssel" href="/publickey.asc">GPG</a>
+          <span> &middot; </span>
+          <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+        </summary>
+        <code title="GPG-Fingerabdruck">{{ .Site.Params.author.gpgFingerprint }}</code>
+      </details>
     {{ else if eq .Page.Language.Lang "en" }}
-      <a title="Contact me" href="{{ .Site.Params.author.email }}">E-Mail</a>
-      <span> &middot; </span>
-      <a title="GPG-Key" href="/publickey.asc">GPG</a>
-      <span> &middot; </span>
-      <a title="Development work & Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+      <details id="home-link-collection" title="Display GPG-Fingerprint">
+        <summary>
+          <a title="Contact me" href="{{ .Site.Params.author.email }}">E-Mail</a>
+          <span> &middot; </span>
+          <a title="GPG-Key" href="/publickey.asc">GPG</a>
+          <span> &middot; </span>
+          <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+        </summary>
+        <code title="GPG-Fingerprint">{{ .Site.Params.author.gpgFingerprint }}</code>
+      </details>
     {{ end }}
-    &gt;
-    <br>
-    <code>{{ .Site.Params.author.gpgFingerprint }}</code>
   </div>
   <div class="content">
     {{ .Content }}
