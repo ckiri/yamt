@@ -39,8 +39,9 @@ markup:
 
 params:
   author:
-    email: <your_email>
-    name: <your_name>
+    email: <mail>
+    gpgFingerprint: <fingerprint>
+    name: <name>
     github: <link_to_your_github>
     address:
       street: <street>
@@ -48,7 +49,7 @@ params:
       city: <city>
       country: <country>
   hosting:
-    name: <your_hosting_service>
+    name: <hosting_provider>
     address:
       street: <street>
       zipCode: <zip_code>
@@ -56,7 +57,7 @@ params:
       country: <country>
   description: <a_small_description_of_your_site>
 
-defaultContentLanguage: <your_sites_main_language_eg_de>
+defaultContentLanguage: <your_sites_main_language_code>
 defaultContentLanguageInSubdir: true
 
 languages:
@@ -76,4 +77,4 @@ Note that some options aren't strictly necessary, those are:
 * `markup`:
   * `unsafe`: The unsafe renderer is required if you want to include html inside your markdown files
 * `params`: Here contact & license information could be specified, this way links inside the header, footer
-  & legal forms (imprint/privacy) are populated:
+  & legal forms (imprint/privacy) are populated
