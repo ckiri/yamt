@@ -36,16 +36,6 @@ markup:
   goldmark:
     renderer:
       unsafe: true
-    extensions:
-      passthrough:
-        delimiters:
-          block:
-          - - \[
-            - \]
-          inline:
-          - - \(
-            - \)
-        enable: true
 
 params:
   author:
@@ -85,13 +75,5 @@ languages:
 Note that some options aren't strictly necessary, those are:
 * `markup`:
   * `unsafe`: The unsafe renderer is required if you want to include html inside your markdown files
-  * `passthrough`: This allows you to write mathmatical expressions using `\(` `\)` for inline
-    & `\[` `\]` for blocks. It uses Hugos integrated KaTeX rendering engine, so no client-side javascript
-    is required.
 * `params`: Here contact & license information could be specified, this way links inside the header, footer
   & legal forms (imprint/privacy) are populated:
-  * `address`: Is used inside the [author-adress](./layouts/_shortcodes/author-address.html) shortcode.
-  * `email`: Is used inside the [author-email](./layouts/_shortcodes/author-email.html) shortcode.
-  * `name`: Is used inside the [author-name](./layouts/_shortcodes/author-name.html) shortcode.
-  * `hosting-name`: Is used inside the [hosting-name](./layouts/_shortcodes/hosting-name.html) shortcode.
-  * `hosting-address`: Is used inside the [hosting-address](./layouts/_shortcodes/hosting-address.html) shortcode.
