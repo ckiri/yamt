@@ -2,27 +2,13 @@
   <h1 class="title">{{ .Title }}</h1>
   <div class="link-collection">
     {{ if eq .Page.Language.Lang "de" }}
-      <details id="home-link-collection" title="GPG-Fingerabdruck anzeigen">
-        <summary>
-          <a title="Kontaktiere mich" href="{{ .Site.Params.author.email }}">E-Mail</a>
-          <span> &middot; </span>
-          <a title="GPG-Schlüssel" href="/publickey.asc">GPG</a>
-          <span> &middot; </span>
-          <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
-        </summary>
-        <code title="GPG-Fingerabdruck">{{ .Site.Params.author.gpgFingerprint }}</code>
-      </details>
+      <a title="Kontaktiere mich" href="mailto:{{ .Site.Params.author.email }}">E-Mail</a>
+      <span> &middot; </span>
+      <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
     {{ else if eq .Page.Language.Lang "en" }}
-      <details id="home-link-collection" title="Display GPG-Fingerprint">
-        <summary>
-          <a title="Contact me" href="{{ .Site.Params.author.email }}">E-Mail</a>
-          <span> &middot; </span>
-          <a title="GPG-Key" href="/publickey.asc">GPG</a>
-          <span> &middot; </span>
-          <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
-        </summary>
-        <code title="GPG-Fingerprint">{{ .Site.Params.author.gpgFingerprint }}</code>
-      </details>
+      <a title="Contact me" href="mailto:{{ .Site.Params.author.email }}">E-Mail</a>
+      <span> &middot; </span>
+      <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
     {{ end }}
   </div>
   <div class="content">

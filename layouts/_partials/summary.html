@@ -1,0 +1,8 @@
+<p class="preview-summary">
+  {{ $summary := index (split .Content "</p>") 0 }}
+  {{ if gt (len (findRE "</p>" .Content)) 1 }}
+    {{ $summary = replaceRE "[.?!]$" "…" $summary }}
+  {{ end }}
+  {{ $summary = printf "%s</p>" $summary }}
+  {{ $summary | safeHTML }}
+</p>

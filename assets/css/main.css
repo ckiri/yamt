@@ -123,6 +123,7 @@ pre {
   max-width: 100%;
   display: block;
   overflow: auto hidden;
+  padding: 1em;
 }
 
 .content table {
@@ -153,6 +154,8 @@ pre {
   font-size: 0.8rem;
   text-align: left;
 }
+
+.footnotes ol { padding-left: 1em; }
 
 sup,
 sub { line-height: 0; }

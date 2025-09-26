@@ -17,14 +17,7 @@
       {{ end }}
     </div>
   {{ end }}
-  <p class="preview-summary">
-    {{ $summary := index (split .Content "</p>") 0 }}
-    {{ $summary = plainify $summary }}
-    {{ if gt (len (findRE "</p>" .Content)) 1 }}
-      {{ $summary = replaceRE "[.?!]$" "…" $summary }}
-    {{ end }}
-    {{ $summary }}
-  </p>
+  {{ partial "summary.html" . }}
   <div class="preview-footer">
     <a href="{{ .RelPermalink }}">
       {{- if eq .Page.Language.Lang "de" -}}

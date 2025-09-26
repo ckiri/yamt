@@ -21,9 +21,9 @@
             {{ if .Page.Prev }}
               <a href="{{ .Prev.Page.Permalink }}"
                 {{ if eq .Page.Language.Lang "de" }}
-                  title="Nächster Beitrag"
+                  title="Vorheriger Beitrag"
                 {{ else if eq .Page.Language.Lang "en" }}
-                  title="next post"
+                  title="prev post"
                 {{ end }}>
                 &larr;
               </a>
