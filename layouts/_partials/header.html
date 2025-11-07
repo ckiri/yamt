@@ -17,6 +17,20 @@
         {{ end }}
         &middot;
         {{ if eq .Page.Language.Lang "de" }}
+          {{ if eq "/de/about/" .RelPermalink }}
+            <b>About</b>
+          {{ else }}
+            <a href="{{ printf "%sde/about" .Site.BaseURL }}">About</a>
+          {{ end }}
+        {{ else if eq .Page.Language.Lang "en" }}
+          {{ if eq "/en/about/" .RelPermalink }}
+            <b>About</b>
+          {{ else }}
+            <a href="{{ printf "%sen/about" .Site.BaseURL }}">About</a>
+          {{ end }}
+        {{ end }}
+        &middot;
+        {{ if eq .Page.Language.Lang "de" }}
           {{ if eq "/de/posts/" .RelPermalink }}
             <b>Blog</b>
           {{ else }}

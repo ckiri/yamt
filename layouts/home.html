@@ -1,17 +1,51 @@
-{{ define "main" }}
-  <h1 class="title">{{ .Title }}</h1>
-  <div class="link-collection">
-    {{ if eq .Page.Language.Lang "de" }}
-      <a title="Kontaktiere mich" href="mailto:{{ .Site.Params.author.email }}">E-Mail</a>
-      <span> &middot; </span>
-      <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
-    {{ else if eq .Page.Language.Lang "en" }}
-      <a title="Contact me" href="mailto:{{ .Site.Params.author.email }}">E-Mail</a>
-      <span> &middot; </span>
-      <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
-    {{ end }}
-  </div>
-  <div class="content">
-    {{ .Content }}
-  </div>
-{{ end }}
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body id="home">
+  <a id="top"></a>
+  <main>
+    <h1 class="title">{{ .Title }}</h1>
+    <div class="link-collection">
+      {{ if eq .Page.Language.Lang "de" }}
+        <span>
+          {{ $alt := index (where .Translations "Lang" "en") 0 }}
+          {{ if $alt }}
+            <a title="Switch to english version" href="{{ $alt.RelPermalink }}">EN</a>
+          {{ else }}
+            <span title="No translation available">EN</span>
+          {{ end }}
+        </span>
+        <span> &middot; </span>
+        <a title="Erfahre mehr über mich" href="{{ .Site.BaseURL }}de/about">About</a>
+        <span> &middot; </span>
+        <a href="{{ .Site.BaseURL }}de/posts">Blog</a>
+        <span> &middot; </span>
+        <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+      {{ else if eq .Page.Language.Lang "en" }}
+        <span>
+          {{ $alt := index (where .Translations "Lang" "de") 0 }}
+          {{ if $alt }}
+            <a title="Zur deutschen Version wechseln" href="{{ $alt.RelPermalink }}">DE</a>
+          {{ else }}
+            <span title="Keine Übersetzung vorhanden">DE</span>
+          {{ end }}
+        </span>
+        <span> &middot; </span>
+        <a title="More about me" href="{{ .Site.BaseURL }}en/about">About</a>
+        <span> &middot; </span>
+        <a href="{{ .Site.BaseURL }}en/posts">Blog</a>
+        <span> &middot; </span>
+        <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
+      {{ end }}
+    </div>
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </main>
+  <footer>
+    {{ partial "footer.html" . }}
+  </footer>
+</body>
+</html>
