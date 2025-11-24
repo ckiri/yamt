@@ -136,7 +136,7 @@ figcaption > p {
 
 pre,
 code {
-  font: 1em/1.1 Monospace;
+  font: 1em/1.3 Monospace;
 }
 
 code {
@@ -272,12 +272,9 @@ footer {
   :root {
     --eerie-black: #191D22ff;
     --charcoal: #33505Bff;
-    --cinereous: #6B605Aff;
-    --hookers-green: #3D594Eff;
     --timberwolf: #BFBCB0ff;
     --bone: #E6E1D4ff;
     --bone-2: #DAD5C8ff;
-    --moss-green: #516648ff;
   }
 
   .active:link,
@@ -289,6 +286,25 @@ footer {
   }
 
   hr { background-color: var(--timberwolf); }
+
+  header {
+    background: var(--bone);
+    background: -webkit-linear-gradient(
+      180deg,
+      rgba(230, 225, 212, 1) 25%,
+      rgba(191, 188, 176, 1) 82%
+    );
+    background: -moz-linear-gradient(
+      180deg,
+      rgba(230, 225, 212, 1) 25%,
+      rgba(191, 188, 176, 1) 82%
+    );
+    background: linear-gradient(
+      180deg,
+      rgba(230, 225, 212, 1) 25%,
+      rgba(191, 188, 176, 1) 82%
+    );
+  }
 
   blockquote,
   footer,
@@ -303,18 +319,13 @@ footer {
 
   pre > code { background-color: #00000000; }
 
-  blockquote { color: var(--cinereous); }
+  a:link,
+  a:visited { color: var(--charcoal); }
 
-  h1,
-  h2,
-  h3,
-  h5,
-  h5,
-  h6 { color: var(--charcoal); }
-
-  a:link { color: var(--moss-green); }
-
-  a:visited { color: var(--hookers-green); }
+  ::selection {
+    color: var(--bone);
+    background-color: var(--eerie-black);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -322,19 +333,34 @@ footer {
     --raisin-black: #22222Bff;
     --raisin-black-2: #2D2D38ff;
     --onyx: #434346ff;
-    --coffee: #97775Cff;
-    --coffee-2: #B7977Cff;
     --indian-red: #E38377ff;
     --pearl: #E8DCC4ff;
-    --ivory: #F7F5E8ff;
   }
 
   .active:link,
   .active:visited,
-  body,
-  header {
+  body {
     color: var(--pearl);
     background-color: var(--raisin-black);
+  }
+
+  header {
+    background: var(--raisin-black);
+    background: -webkit-linear-gradient(
+      180deg,
+      rgba(34, 34, 43, 1) 25%,
+      rgba(67, 67, 70, 1) 82%
+    );
+    background: -moz-linear-gradient(
+      180deg,
+      rgba(34, 34, 43, 1) 25%,
+      rgba(67, 67, 70, 1) 82%
+    );
+    background: linear-gradient(
+      180deg,
+      rgba(34, 34, 43, 1) 25%,
+      rgba(67, 67, 70, 1) 82%
+    );
   }
 
   hr { background-color: var(--onyx); }
@@ -352,16 +378,11 @@ footer {
 
   pre > code { background-color: #00000000; }
 
-  blockquote { color: var(--coffee-2); }
-
-  h1,
-  h2,
-  h3,
-  h5,
-  h5,
-  h6 { color: var(--ivory); }
-
+  a:visited,
   a:link { color: var(--indian-red); }
 
-  a:visited { color: var(--coffee); }
+  ::selection {
+    color: var(--raisin-black);
+    background-color: var(--pearl);
+  }
 }
