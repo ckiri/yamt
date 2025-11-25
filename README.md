@@ -78,3 +78,4 @@ Note that some options aren't strictly necessary, those are:
   * `unsafe`: The unsafe renderer is required if you want to include html inside your markdown files
 * `params`: Here contact & license information could be specified, this way links inside the header, footer
   & legal forms (imprint/privacy) are populated
+  
