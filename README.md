@@ -9,9 +9,6 @@
 * No JavaScript
 * Small & fast
 
-## Requirements
-* [Hugo](https://github.com/gohugoio/hugo) 0.148 or higher (lower might also work, but haven't tested)
-
 ## Installation
 Install it as a git submodule inside the root of your Hugo project:
 ```
