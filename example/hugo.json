@@ -1,0 +1,68 @@
+{
+    "baseURL": "http://localhost:1313",
+    "title": "yamt",
+    "theme": "yamt",
+    "markup": {
+        "goldmark": {
+            "renderer": {
+                "unsafe": true
+	    },
+	    "extensions": {
+		"passthrough": {
+		    "delimiters": {
+			"block": [
+			    [ "\\[", "\\]" ]
+			],
+			"inline": [
+			    [ "\\(", "\\)" ]
+			]
+		    },
+		    "enable": true
+		}
+	    }
+        }
+    },
+    "params": {
+        "author": {
+            "name": "Chris Kiriakou",
+            "email": "c@ckiri.com",
+            "gitHub": "https://github.com/ckiri/yamt"
+        }
+    },
+    "defaultContentLanguage": "en",
+    "defaultContentLanguageInSubdir": true,
+    "languages": {
+        "en": {
+            "weight": 1,
+	    "languageCode": "en-US",
+            "languageName": "English",
+            "params": {
+                "reading_speed": 228,
+		"description": "Yet another minimal Hugo Theme."
+            }
+        },
+        "de": {
+            "weight": 1,
+	    "languageCode": "de-DE",
+            "language": "Deutsch",
+            "params": {
+                "reading_speed": 179,
+		"description": "Ein weiteres minimalisitsches Hugo Theme."
+            }
+        }
+    },
+    "menus": {
+	"main": [
+	    {
+		"name": "About",
+		"pageRef": "/about",
+		"weight": "10"
+	    },
+	    {
+		"name": "Blog",
+		"pageRef": "/posts",
+		"weight": "20"
+	    }
+	]
+    }
+}
