@@ -1,0 +1,8 @@
+<div class="metadata">
+  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  <br>
+  {{ $dateTime := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateF := .Date | time.Format ":date_short" }}
+  {{ $timeF := .Date | time.Format ":time_short" }}
+  <time datetime="{{ $dateTime }}">{{ $dateF }}, {{ $timeF }}</time>
+</div>

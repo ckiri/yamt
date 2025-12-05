@@ -1,90 +1,13 @@
-<table>
-  <tr>
-    <td class="menu-l">
-      <nav>
-        {{ if eq .Page.Language.Lang "de" }}
-          {{ if eq "/de/" .RelPermalink }}
-            <b>Home</b>
-          {{ else }}
-            <a href="{{ printf "%sde/" .Site.BaseURL }}">Home</a>
-          {{ end }}
-        {{ else if eq .Page.Language.Lang "en" }}
-          {{ if eq "/en/" .RelPermalink }}
-            <b>Home</b>
-          {{ else }}
-            <a href="{{ printf "%sen/" .Site.BaseURL }}">Home</a>
-          {{ end }}
-        {{ end }}
-        &middot;
-        {{ if eq .Page.Language.Lang "de" }}
-          {{ if eq "/de/about/" .RelPermalink }}
-            <b>About</b>
-          {{ else }}
-            <a href="{{ printf "%sde/about" .Site.BaseURL }}">About</a>
-          {{ end }}
-        {{ else if eq .Page.Language.Lang "en" }}
-          {{ if eq "/en/about/" .RelPermalink }}
-            <b>About</b>
-          {{ else }}
-            <a href="{{ printf "%sen/about" .Site.BaseURL }}">About</a>
-          {{ end }}
-        {{ end }}
-        &middot;
-        {{ if eq .Page.Language.Lang "de" }}
-          {{ if eq "/de/posts/" .RelPermalink }}
-            <b>Blog</b>
-          {{ else }}
-            <a href="{{ printf "%sde/posts/" .Site.BaseURL }}">Blog</a>
-          {{ end }}
-        {{ else if eq .Page.Language.Lang "en" }}
-          {{ if eq "/en/posts/" .RelPermalink }}
-            <b>Blog</b>
-          {{ else }}
-            <a href="{{ printf "%sen/posts/" .Site.BaseURL }}">Blog</a>
-          {{ end }}
-        {{ end }}
-        &middot;
-        {{ if eq .Page.Language.Lang "de" }}
-          {{ if eq "/de/tags/" .RelPermalink }}
-            <b>Tags</b>
-          {{ else }}
-            <a href="{{ printf "%sde/tags/" .Site.BaseURL }}">Tags</a>
-          {{ end }}
-        {{ else if eq .Page.Language.Lang "en" }}
-          {{ if eq "/en/tags/" .RelPermalink }}
-            <b>Tags</b>
-          {{ else }}
-            <a href="{{ printf "%sen/tags/" .Site.BaseURL }}">Tags</a>
-          {{ end }}
-        {{ end }}
-      </nav>
-    </td>
-    <td class="menu-r">
-      <nav>
-        {{ if eq .Page.Language.Lang "de" }}
-          <span>
-            <b>DE</b>
-            &vert;
-            {{ $alt := index (where .Translations "Lang" "en") 0 }}
-            {{ if $alt }}
-              <a title="Switch to english version" href="{{ $alt.RelPermalink }}">EN</a>
-            {{ else }}
-              <span title="No translation available">EN</span>
-            {{ end }}
-          </span>
-        {{ else if eq .Page.Language.Lang "en" }}
-          <span>
-            {{ $alt := index (where .Translations "Lang" "de") 0 }}
-            {{ if $alt }}
-              <a title="Zur deutschen Version wechseln" href="{{ $alt.RelPermalink }}">DE</a>
-            {{ else }}
-              <span title="Keine Übersetzung vorhanden">DE</span>
-            {{ end }}
-            &vert;
-            <b>EN</b>
-          </span>
-        {{ end }}
-      </nav>
-    </td>
-  <tr>
-</table>
+<nav>
+  <div class="nav-l">
+    {{ partial "menu.html" . }}
+  </div>
+  <div class="nav-c">
+    <a class="site-title" href="{{ print .Site.BaseURL .Language.Lang }}">
+      {{ .Site.Title }}
+    </a>
+  </div>
+  <div class="nav-r">
+    {{ partial "language-menu.html" . }}
+  </div>
+</nav>
