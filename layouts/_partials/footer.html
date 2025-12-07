@@ -1,13 +1,11 @@
-<nav>
-  <div class="nav-c">
+<div class="banner">
   &copy; {{ now.Year }} {{ .Site.Params.author.name }}
   &middot;
-  <a href="mailto:{{ .Site.Params.author.email }}">{{ T "email" }}</a>
+  <a href="mailto:{{- .Site.Params.author.email -}}">{{ T "email" }}</a>
   &middot;
   {{/* TODO: look for a better approach to handle links */}}
-  {{ $base := print .Site.BaseURL .Language.Lang }}
-  <a href="{{ print $base "/imprint" }}">{{ T "imprint" }}</a>
+  {{- $base := print .Site.BaseURL .Language.Lang -}}
+  <a href="{{- print $base "/imprint" -}}">{{ T "imprint" }}</a>
   &middot;
-  <a href="{{ print $base "/privacy" }}">{{ T "privacy" }}</a>
-  </div>
-</nav>
+  <a href="{{- print $base "/privacy" -}}">{{ T "privacy" }}</a>
+</div>

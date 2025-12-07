@@ -1,13 +1,13 @@
 <nav>
-  <div class="nav-l">
-    {{ partial "menu.html" . }}
-  </div>
-  <div class="nav-c">
-    <a class="site-title" href="{{ print .Site.BaseURL .Language.Lang }}">
-      {{ .Site.Title }}
-    </a>
-  </div>
-  <div class="nav-r">
-    {{ partial "language-menu.html" . }}
-  </div>
+<div class="nav-l">
+  {{- partial "menu.html" . -}}
+</div>
+<div class="nav-c">
+  <a class="site-title" href="{{- print .Site.BaseURL .Language.Lang -}}">
+    {{- .Site.Title -}}
+  </a>
+</div>
+<div class="nav-r">
+  {{- partial "language-menu.html" . -}}
+</div>
 </nav>

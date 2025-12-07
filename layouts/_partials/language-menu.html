@@ -1,25 +1,21 @@
 <div class="language-menu">
-  {{ $page := . }} {{/* Keep the context - fell into that pit */}}
-  {{ $lastIndex := sub (len .Site.Languages) 1 }}
-  {{ range $i, $lang := .Site.Languages }}
-    {{ if eq $page.Language.Lang $lang.Lang }}
-      <span class="active">
-        {{- $lang.Lang -}}
-      </span>
-    {{ else }}
-      <span class="inactive">
-        {{ $alt := index (where $page.Translations "Lang" $lang.Lang) 0 }}
-        {{ if $alt }}
-          <a href="{{ $alt.RelPermalink }}">
-            {{- $lang.Lang -}}
-          </a>
-        {{ else }}
-          {{- $lang.Lang -}}
-        {{ end }}
-      </span>
-    {{ end }}
-    {{ if lt $i $lastIndex }}
+{{- $page := . -}}{{/* Keep the context - fell into that pit */}}
+{{- $lastIndex := sub (len .Site.Languages) 1 -}}
+{{- range $i, $lang := .Site.Languages -}}
+  {{- if eq $page.Language.Lang $lang.Lang -}}
+    <span class="active">{{- $lang.Lang -}}</span>
+  {{- else }}
+    {{- $alt := index (where $page.Translations "Lang" $lang.Lang) 0 -}}
+    {{- if $alt -}}
+      <a href="{{- $alt.RelPermalink -}}">{{- $lang.Lang -}}</a>
+    {{- else -}}
+      {{- $lang.Lang -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if lt $i $lastIndex -}}
+    <span>
       &vert;
-    {{ end }}
-  {{ end }}
+    </span>
+  {{- end -}}
+{{- end -}}
 </div>
