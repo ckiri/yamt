@@ -24,7 +24,7 @@ Renders a menu for the given menu ID.
     {{- end -}}
     {{- $pageRef := .PageRef -}}
     {{- /* TODO: look for a better approach to handle links */ -}}
-    {{- $url := print "/" $page.Language.Lang $pageRef "/" -}} {{/* This is not a clean solution */}}
+    {{- $url := print $page.Site.Params.baseURL "/" $page.Language.Lang $pageRef "/" -}} {{/* This is not a clean solution */}}
     {{- if eq $url $page.RelPermalink -}}
       <span class="active">
         {{- $name -}}
