@@ -1,6 +1,6 @@
 {
     "baseURL": "http://localhost:1313",
-    "title": "yamt",
+    "title": "YAMT",
     "theme": "yamt",
     "markup": {
         "goldmark": {
