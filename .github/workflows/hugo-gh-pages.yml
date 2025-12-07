@@ -1,4 +1,4 @@
-name: Deploy Hugo site to GitHub Pages
+name: Deploy theme example site to GitHub Pages
 
 on:
   push:
@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - "example/**"
+      - "layouts/**"
+      - "assets/**"
+      - "static/**"
+      - "hugo.json"
       - ".github/workflows/hugo-gh-pages.yml"
   workflow_dispatch:
 
@@ -15,7 +19,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "hugo-gh-pages"
+  group: "hugo-theme-example"
   cancel-in-progress: true
 
 jobs:
@@ -23,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout theme repository
         uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: false
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -35,13 +39,30 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - name: Build Hugo site from example/
-        run: hugo --source example --minify
+      - name: Create temporary Hugo site
+        run: |
+          hugo new site site-tmp
+          rm -rf site-tmp/themes
+          mkdir -p site-tmp/themes
+          # Add this theme as a submodule of the temp site
+          cd site-tmp
+          git init
+          git submodule add "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git" themes/yamt
+          cd ..
+
+      - name: Copy example site into temp site
+        run: |
+          cp -r example/* site-tmp/
+
+      - name: Build Hugo (from temp site)
+        working-directory: site-tmp
+        run: |
+          hugo --minify
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: site-tmp/public
 
   deploy:
     environment:
@@ -54,4 +75,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
