@@ -44,7 +44,7 @@ jobs:
 
       - name: Copy example site into temp site
         run: |
-          cp -r example/* site-tmp/
+          cp -r site-tmp/themes/yamt/example/* site-tmp/
 
       - name: Build Hugo (from temp site)
         working-directory: site-tmp
