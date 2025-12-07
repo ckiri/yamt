@@ -1,0 +1,16 @@
+{{- $ratio := (split (.Get "ratio") ":") -}}
+{{- $.Scratch.Set "ratioScheme" "" -}}
+{{- range $ratio -}}
+  {{- $.Scratch.Add "ratioScheme" . -}}
+{{- end -}}
+{{- $ID := print "ColumnsRatio" ($.Scratch.Get "ratioScheme") -}}
+<div id="{{- $ID -}}" class="columns">
+  <style>
+  {{- range $index, $grow := $ratio }}
+    #{{- $ID }} > ul > li:nth-child({{- $index | add 1 -}}) {
+      flex: {{ default 1 $grow -}};
+    }
+  {{- end }}
+  </style>
+  {{- .Inner | safeHTML -}}
+</div>
