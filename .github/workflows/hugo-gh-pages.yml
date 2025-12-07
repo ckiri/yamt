@@ -27,12 +27,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout theme repository
-        uses: actions/checkout@v4
-        with:
-          submodules: false
-          fetch-depth: 0
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -42,9 +36,7 @@ jobs:
       - name: Create temporary Hugo site
         run: |
           hugo new site site-tmp
-          rm -rf site-tmp/themes
-          mkdir -p site-tmp/themes
-          # Add this theme as a submodule of the temp site
+          rm -rf site-tmp/hugo.*
           cd site-tmp
           git init
           git submodule add "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git" themes/yamt
@@ -57,6 +49,7 @@ jobs:
       - name: Build Hugo (from temp site)
         working-directory: site-tmp
         run: |
+          ls -R content/ themes/
           hugo --minify
 
       - name: Upload Pages artifact
