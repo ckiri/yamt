@@ -17,39 +17,7 @@
     {{ .Content }}
   </main>
   <footer>
-    {{ if eq .Page.Language.Lang "de" }}
-      {{ if eq .RelPermalink "/de/imprint/" }}
-        <b>Impressum</b>
-      {{ else }}
-        <a href="{{ .Site.BaseURL }}de/imprint/">Impressum</a>
-      {{ end }}
-      &middot;
-      {{ if eq .RelPermalink "/de/privacy/" }}
-        <b>Datenschutz</b>
-      {{ else }}
-        <a href="{{ .Site.BaseURL }}de/privacy/">Datenschutz</a>
-      {{ end }}
-    {{ else if eq .Page.Language.Lang "en" }}
-      {{ if eq .RelPermalink "/en/imprint/" }}
-        <b>imprint</b>
-      {{ else }}
-        <a href="{{ .Site.BaseURL }}en/imprint/">imprint</a>
-      {{ end }}
-      &middot;
-      {{ if eq .RelPermalink "/en/privacy/" }}
-        <b>privacy</b>
-      {{ else }}
-        <a href="{{ .Site.BaseURL }}en/privacy/">privacy</a>
-      {{ end }}
-    {{ end }}
+    {{ partial "footer.html" . }}
   </footer>
 </body>
 </html>
-
-<!--
-<script>
-  console.log("Permalink: {{ .Permalink }}")
-  {{ $imprintURL :=  printf "%sde/imprint/" .Site.BaseURL }}
-  console.log("Imprint URL: {{ $imprintURL }}")
-</script>
--->

@@ -1,61 +1,21 @@
 {{ define "main" }}
   <h1 class="title" id="content-title">{{ .Title }}</h1>
-  <div class="content-metadata">
-    <div class="terms">
-      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-    </div>
-    {{ $dateTime := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateF := .Date | time.Format ":date_full" }}
-    {{ $timeF := .Date | time.Format ":time_short" }}
-    <time datetime="{{ $dateTime }}">{{ $dateF }} {{ $timeF }}</time>
-  </div>
+  {{ if .Page.Params }}
+    {{ partial "metadata.html" . }}
+  {{ end }}
   <div class="content">
     {{ .Content }}
   </div>
-  <hr>
-  <table class="post-nav">
-    <tbody>
-      <tr>
-        <td id="prev-post">
-          <nav>
-            {{ if .Page.Prev }}
-              <a href="{{ .Prev.Page.Permalink }}"
-                {{ if eq .Page.Language.Lang "de" }}
-                  title="Vorheriger Beitrag"
-                {{ else if eq .Page.Language.Lang "en" }}
-                  title="prev post"
-                {{ end }}>
-                &larr;
-              </a>
-            {{ end }}
-          </nav>
-        </td>
-        <td id="to-top">
-          <nav>
-            <a href="#top">
-              {{ if eq .Page.Language.Lang "de" }}
-                Zum Anfang
-              {{ else if eq .Page.Language.Lang "en" }}
-                to the top
-              {{ end }}
-            </a>
-          </nav>
-        </td>
-        <td id="next-post">
-          <nav>
-            {{ if .Page.Next }}
-              <a href="{{ .Next.Page.Permalink }}"
-                {{ if eq .Page.Language.Lang "de" }}
-                  title="Nächster Beitrag"
-                {{ else if eq .Page.Language.Lang "en" }}
-                  title="next post"
-                {{ end }}>
-                &rarr;
-              </a>
-            {{ end }}
-          </nav>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <nav class="posts-navigation">
+    <div class="nav-l">
+      {{ if .Page.Prev }}
+        <a href="{{ .Prev.Page.Permalink }}">&larr;</a>
+      {{ end }}
+    </div>
+    <div class="nav-r">
+      {{ if .Page.Next }}
+        <a href="{{ .Next.Page.Permalink }}">&rarr;</a>
+      {{ end }}
+    </div>
+  </nav>
 {{ end }}

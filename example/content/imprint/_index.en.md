@@ -1,0 +1,4 @@
+{
+    "title": "Imprint",
+    "layout": "legal"
+}

@@ -1,21 +1,11 @@
-<nav>
+<div class="banner">
   &copy; {{ now.Year }} {{ .Site.Params.author.name }}
   &middot;
-  <a
-    {{ if eq .Page.Language.Lang "de" }}
-      title="Kontaktiere mich"
-    {{ else }}
-      title="Contact me"
-    {{ end }}
-    href="mailto:{{ .Site.Params.author.email }}">{{ if eq .Page.Language.Lang "de" }}E-Mail{{ else }}E-Mail{{ end }}</a>
+  <a href="mailto:{{- .Site.Params.author.email -}}">{{ T "email" }}</a>
   &middot;
-  {{ if eq .Page.Language.Lang "de" }}
-    <a href="{{ .Site.BaseURL }}de/imprint/">Impressum</a>
-    &middot;
-    <a href="{{ .Site.BaseURL }}de/privacy/">Datenschutz</a>
-  {{ else if eq .Page.Language.Lang "en" }}
-    <a href="{{ .Site.BaseURL }}en/imprint/">Imprint</a>
-    &middot;
-    <a href="{{ .Site.BaseURL }}/en/privacy/">Privacy</a>
-  {{ end }}
-</nav>
+  {{/* TODO: look for a better approach to handle links */}}
+  {{- $base := print .Site.BaseURL .Language.Lang -}}
+  <a href="{{- print $base "/imprint" -}}">{{ T "imprint" }}</a>
+  &middot;
+  <a href="{{- print $base "/privacy" -}}">{{ T "privacy" }}</a>
+</div>

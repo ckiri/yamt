@@ -6,39 +6,15 @@
 <body id="home">
   <a id="top"></a>
   <main>
-    <h1 class="title">{{ .Title }}</h1>
+    <h1 class="title">{{ .Site.Title }}</h1>
     <div class="link-collection">
-      {{ if eq .Page.Language.Lang "de" }}
-        <span>
-          {{ $alt := index (where .Translations "Lang" "en") 0 }}
-          {{ if $alt }}
-            <a title="Switch to english version" href="{{ $alt.RelPermalink }}">EN</a>
-          {{ else }}
-            <span title="No translation available">EN</span>
-          {{ end }}
-        </span>
-        <span> &middot; </span>
-        <a title="Erfahre mehr über mich" href="{{ .Site.BaseURL }}de/about">About</a>
-        <span> &middot; </span>
-        <a href="{{ .Site.BaseURL }}de/posts">Blog</a>
-        <span> &middot; </span>
-        <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
-      {{ else if eq .Page.Language.Lang "en" }}
-        <span>
-          {{ $alt := index (where .Translations "Lang" "de") 0 }}
-          {{ if $alt }}
-            <a title="Zur deutschen Version wechseln" href="{{ $alt.RelPermalink }}">DE</a>
-          {{ else }}
-            <span title="Keine Übersetzung vorhanden">DE</span>
-          {{ end }}
-        </span>
-        <span> &middot; </span>
-        <a title="More about me" href="{{ .Site.BaseURL }}en/about">About</a>
-        <span> &middot; </span>
-        <a href="{{ .Site.BaseURL }}en/posts">Blog</a>
-        <span> &middot; </span>
-        <a title="Repositories" href="{{ .Site.Params.author.github }}">GitHub</a>
-      {{ end }}
+      <a href="{{ print .RelPermalink "about" }}">About</a>
+      <span> &middot; </span>
+      <a href="{{ print .RelPermalink "posts" }}">Blog</a>
+      <span> &middot; </span>
+      <a href="{{ print .RelPermalink "posts/index.xml" }}">RSS</a>
+      <span> &middot; </span>
+      <a href="{{ .Site.Params.author.github }}">GitHub</a>
     </div>
     <div class="content">
       {{ .Content }}

@@ -1,5 +1,10 @@
 {{ define "main" }}
   <h1 class="title">{{ .Title }}</h1>
+  <div class="link-collection">
+    <a href="{{ print .RelPermalink "archive" }}">{{ T "blogArchive" }}</a>
+    <span> &middot; </span>
+    <a href="{{ print .RelPermalink "index.xml" }}">{{ T "rssFeed" }}</a>
+  </div>
   {{ .Content }}
   <div class="previews">
     {{ range first 5 (sort .RegularPages ".Date" "desc") }}

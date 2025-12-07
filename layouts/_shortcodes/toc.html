@@ -1,6 +1,2 @@
-{{ if eq .Page.Language.Lang "de" }}
-  <h2>Inhaltsverzeichnis</h2>
-{{ else if eq .Page.Language.Lang "en" }}
-  <h2>Table Of Contents</h2>
-{{ end}}
+<h2>{{ T "toc" }}</h2>
 {{ .Page.TableOfContents }}

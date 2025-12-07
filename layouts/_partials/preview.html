@@ -1,34 +1,9 @@
 <div class="preview">
-  <h2>{{ .Title }}</h2>
-  {{ if .Page.Params.tags }}
-    <div class="preview-meta">
-      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-      &vert;
-      {{ if eq .Page.Language.Lang "de" }}
-        <span title="Geschätzte Lesedauer" class="reading-time"> 
-          {{ $readingTime := div .WordCount .Site.Params.readingSpeed }}
-          ~{{ $readingTime }} Min.
-        </span>
-      {{ else if eq .Page.Language.Lang "en" }}
-        <span title="approx. reading time" class="reading-time"> 
-          {{ $readingTime := div .WordCount .Site.Params.readingSpeed }}
-          ~{{ $readingTime }}min. 
-        </span>
-      {{ end }}
-    </div>
+  <h2>
+    <a href="{{ .RelPermalink }}">{{- .Title -}}</a>
+  </h2>
+  {{ if .Page.Params }}
+    {{ partial "metadata.html" . }}
   {{ end }}
   {{ partial "summary.html" . }}
-  <div class="preview-footer">
-    <a href="{{ .RelPermalink }}">
-      {{- if eq .Page.Language.Lang "de" -}}
-        Mehr lesen
-      {{- else if eq .Page.Language.Lang "en" -}}
-        Read More
-      {{- end -}}
-    </a>
-    {{ $dateTime := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateF := .Date | time.Format ":date_short" }}
-    {{ $timeF := .Date | time.Format ":time_short" }}
-    <time datetime="{{ $dateTime }}">({{ $dateF }} {{ $timeF }})</time>
-  </div>
 </div>
