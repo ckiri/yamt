@@ -50,7 +50,7 @@ jobs:
         working-directory: site-tmp
         run: |
           ls -R content/ themes/
-          hugo --minify
+          hugo --baseURL https://ckiri.github.io/yamt/ --minify
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
