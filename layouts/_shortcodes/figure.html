@@ -5,6 +5,7 @@
 
   {{- $u := urls.Parse (.Get "src") -}}
   {{- $src := $u.String -}}
+  {{- $src = resources.Get $src -}}
   {{- if not $u.IsAbs -}}
     {{- with or (.Page.Resources.Get $u.Path) (resources.Get $u.Path) -}}
       {{- $src = .RelPermalink -}}
