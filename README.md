@@ -3,11 +3,13 @@
 
 Features:
 - Minimal and clean design
-- Light & Dark Mode
+- Light and Dark variants
 - Somewhat responsive
-- Simple blog & taxonomy system
+- Simple blog and taxonomy system
+- Small and fast
+- Math support (Katex)
+- Multilingual
 - No JavaScript
-- Small & fast
 
 Docs/showcase: <https://ckiri.github.io/yamt>
 
@@ -16,7 +18,9 @@ Test it locally using the example:
 ```
 hugo new site yamt-test
 cd yamt-test
-submodule add https://github.com/ckiri/yamt.git themes/yamt
-cp -r themes/yamt/example/ .
+git submodule add https://github.com/ckiri/yamt.git themes/yamt
+cp -r themes/yamt/example/* .
 hugo server
 ```
+
+Open <http://localhost:1313/yamt/> in your Browser.

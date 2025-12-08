@@ -20,13 +20,12 @@ to  build a more complex/fully featured one if so desired.
 - ## Features
   YAMT's includes the following features:
   - Responsive design
-  - Light and dark theme variants
+  - Light and dark variants
   - Support for i18n and multiple languages
-  - Shortcodes and layouts
-  - Math support (\(\KaTeX\))
+  - Shortcodes
+  - Math support (KaTeX)
   - Taxonomie system
-  - Blog
-  - RSS
+  - Blog and RSS-Feed
  
 {{% /columns %}}
 
@@ -44,9 +43,3 @@ Ladybird and Firefox). Even older/simpler ones like Netsurf work without horribl
   that is in the scope of this theme, open up an issue or send a pull request.
 
 {{% /columns %}}
-
-{{% centered %}}
-
-***Enjoy!***
-
-{{% /centered %}}

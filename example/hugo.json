@@ -1,5 +1,5 @@
 {
-    "baseURL": "http://localhost:1313",
+    "baseURL": "http://localhost:1313/yamt",
     "title": "YAMT",
     "theme": "yamt",
     "markup": {
